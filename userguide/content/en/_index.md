@@ -1,24 +1,23 @@
 ---
-title: Docsy
-description: A Hugo theme for creating great technical documentation sites
+title: nmid
+description: a golang micro service & rpc framework
 ---
 
-{{% blocks/cover title="Welcome to Docsy!" image_anchor="top" height="full" %}}
+{{% blocks/cover title="Welcome to nmid!" image_anchor="top" height="full" %}}
 {{% param description %}}
 {.display-6}
 
 <a class="btn btn-lg btn-primary me-3" href="about/">Learn More</a>
-<a class="btn btn-lg btn-secondary" href="docs/get-started/">Get started</a>
+<a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases">Get started</a>
 {.p-initial .my-5}
 
 {{% blocks/link-down color="info" %}}
 {{% /blocks/cover %}}
 
 {{% blocks/lead color="primary" %}}
-Docsy is a theme for the Hugo static site generator that's specifically designed
-for technical documentation sets. Our aim is to help you get a working
-documentation site up and running as easily as possible, so you can concentrate
-on creating great content for your users.
+👏👏Go微服务框架、调度服务 (dispatch anywhere)  
+
+🤟🤟nmid意思为中场指挥官，足球场上的中场就是统领进攻防守的核心。这里是服务的调度核心。一个轻量级分布式微服务RPC框架。 
 
 <a href="https://www.netlify.com" target="_blank" rel="noopener">
   <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" />
@@ -32,8 +31,8 @@ As well as our example site, there's a growing number of projects using Docsy fo
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-brands fa-github" title="Contributions welcome!" url="https://github.com/google/docsy" %}}
-We do a [Pull Request](https://github.com/google/docsy/pulls) contributions workflow on **GitHub**. New users are always welcome!
+{{% blocks/feature icon="fa-brands fa-github" title="Contributions welcome!" url="https://github.com/HughNian/nmid" %}}
+We do a [Pull Request](https://github.com/HughNian/nmid) contributions workflow on **GitHub**. New users are always welcome!
 {{% /blocks/feature %}}
 
 

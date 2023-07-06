@@ -1,5 +1,5 @@
 ---
-title: About Docsy
+title: About nmid
 linkTitle: About
 menu: {main: {weight: 10}}
 ---

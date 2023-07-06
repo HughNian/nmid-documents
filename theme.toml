@@ -1,12 +1,12 @@
 name = "Docsy"
 license = "Apache 2.0"
 licenselink = "https://github.com/google/docsy/blob/main/LICENSE"
-description = "A Hugo theme for technical documentation sites"
+description = "A golang micro service & rpc framework"
 homepage = "https://docsy.dev"
 tags = ["documentation", "multilingual", "customizable", "responsive", "docs"]
 features = []
 min_version = "0.110.0"
 
 [author]
-  name = "The Docsy Authors"
+  name = "hughnian"
   homepage = "https://docsy.dev"
