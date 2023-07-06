@@ -3,7 +3,7 @@ widget: featurette
 headless: true
 weight: 20
 title: Features
-subtitle: Document _anything_ ✨
+subtitle: ✨简单好用的微服务框架✨
 feature:
   - icon: book-open
     icon_pack: fas
