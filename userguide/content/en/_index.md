@@ -9,9 +9,6 @@ description: A golang micro service & rpc framework
 
 <a class="btn btn-lg btn-primary me-3" href="about/">Learn More</a>
 <a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases">Get started</a>
-<span class="js-github-release" data-repo="HughNian/nmid">
-  Project version will appear here<!-- Automatically filled based on data-repo value -->
-</span>
 {.p-initial .my-5}
 
 {{% blocks/link-down color="info" %}}
