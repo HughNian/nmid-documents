@@ -4,6 +4,7 @@ headless: true
 weight: 10
 title: nmid site
 # hero_media: book.svg
+color: '#ED4242'
 design:
   background:
     gradient_start: '#4bb4e3'
