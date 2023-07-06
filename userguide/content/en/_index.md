@@ -9,11 +9,13 @@ description: A golang micro service & rpc framework
 
 <a class="btn btn-lg btn-primary me-3" href="about/">Learn More</a>
 <a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases" target="_blank">Get started</a>
-<br />
+
+<span style="margin-top:20px">
 <a class="github-button" href="https://github.com/HughNian/nmid" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star nmid">Star nmid</a>
 <a class="github-button" href="https://github.com/HughNian/nmid-c" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star nmid-c">Star nmid-c</a>
 <a class="github-button" href="https://github.com/HughNian/nmid-php-ext" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star nmid-php-ext">Star nmid-php-ext</a>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+</span>
 {.p-initial .my-5}
 
 {{% blocks/link-down color="info" %}}
