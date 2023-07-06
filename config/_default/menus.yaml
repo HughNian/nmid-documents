@@ -10,3 +10,6 @@ main:
   - name: Documentation
     url: docs/
     weight: 20
+  - name: Blog
+    url: http://www.niansong.top/
+    weight: 30
