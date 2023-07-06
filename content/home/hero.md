@@ -5,10 +5,10 @@ weight: 10
 title: nmid site
 hero_media: book.svg
 design:
-  background:
-    gradient_start: '#4bb4e3'
-    gradient_end: '#2b94c3'
-    text_color_light: true
+  background: '#EA4343'
+  gradient_start: '#4bb4e3'
+  gradient_end: '#2b94c3'
+  text_color_light: true
 cta:
   url: https://github.com/HughNian/nmid/releases
   label: Get Started

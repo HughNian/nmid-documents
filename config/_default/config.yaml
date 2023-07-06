@@ -4,6 +4,8 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: 'nmid' # Website name
+subtitle: 'nmid golang rpc framework'
+author: 'hughnian'
 baseURL: 'https://example.com/' # Website URL
 
 ############################
