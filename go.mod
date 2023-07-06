@@ -1,9 +1,9 @@
-module github.com/wowchemy/hugo-documentation-theme
+module github.com/google/docsy
 
-go 1.15
+go 1.12
 
 require (
-	github.com/wowchemy/wowchemy-hugo-themes/modules/wowchemy-plugin-netlify v1.0.0 // indirect
-	github.com/wowchemy/wowchemy-hugo-themes/modules/wowchemy-plugin-netlify-cms v1.0.0 // indirect
-	github.com/wowchemy/wowchemy-hugo-themes/modules/wowchemy/v5 v5.6.0 // indirect
+	github.com/FortAwesome/Font-Awesome v0.0.0-20230327165841-0698449d50f2 // indirect
+	github.com/google/docsy/dependencies v0.7.1 // indirect
+	github.com/twbs/bootstrap v5.2.3+incompatible // indirect
 )

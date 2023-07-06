@@ -1,28 +1,96 @@
-# [Hugo Documentation Theme](https://github.com/wowchemy/hugo-documentation-theme)
+# Docsy
 
-The **Documentation** starter template empowers you to easily create **product documentation**, **digital books**, **personal notes**, and **knowledge bases**.
+Docsy is a [Hugo](https://gohugo.io) theme for technical documentation sets,
+providing simple navigation, site structure, and more.
 
-[![Get Started](https://img.shields.io/badge/-Get%20started-ff4655?style=for-the-badge)](https://wowchemy.com/hugo-themes/)
-[![Discord](https://img.shields.io/discord/722225264733716590?style=for-the-badge)](https://discord.com/channels/722225264733716590/742892432458252370/742895548159492138)  
-[![Twitter Follow](https://img.shields.io/twitter/follow/wowchemy?label=Follow%20on%20Twitter)](https://twitter.com/wowchemy)
+This is not an officially supported Google product. This project is actively
+being maintained.
 
-[Check out the latest demo](https://wowchemy.com/docs/) of what you'll get in less than 10 minutes, or [get inspired by how others are using this template](https://wowchemy.com/creators/).
+## Prerequisites
 
-The integrated [**Wowchemy**](https://wowchemy.com) website builder and CMS makes it easy to create a beautiful website for free. Edit your site in the CMS (or your favorite editor), generate it with [Hugo](https://github.com/gohugoio/hugo), and deploy with GitHub or Netlify. Customize anything on your site with widgets, light/dark themes, and language packs.
+The following are basic prerequisites for using Docsy in your site:
 
-- 👉 [**Get Started**](https://wowchemy.com/hugo-themes/)
-- 📚 [View the **documentation**](https://wowchemy.com/docs/)
-- 💬 [Chat with the **Wowchemy research community**](https://discord.gg/z8wNYzb) or [**Hugo community**](https://discourse.gohugo.io)
-- ⬇️ **Automatically import citations from BibTeX** with the [Hugo Academic CLI](https://github.com/wowchemy/hugo-academic-cli)
-- 🐦 Share your new site with the community: [@wowchemy](https://twitter.com/wowchemy) [@GeorgeCushen](https://twitter.com/GeorgeCushen) [#MadeWithWowchemy](https://twitter.com/search?q=%23MadeWithWowchemy&src=typed_query)
-- 🗳 [Take the survey and help us improve #OpenSource](https://forms.gle/NioD9VhUg7PNmdCAA)
-- 🚀 [Contribute improvements](https://github.com/wowchemy/wowchemy-hugo-themes/blob/main/CONTRIBUTING.md) or [suggest improvements](https://github.com/wowchemy/wowchemy-hugo-themes/issues)
-- ⬆️ **Updating?** View the [Update Guide](https://wowchemy.com/docs/hugo-tutorials/update/) and [Release Notes](https://github.com/wowchemy/wowchemy-hugo-themes/releases)
+- Install a recent release of the Hugo "extended" version. If you install from
+  the [Hugo release page](https://github.com/gohugoio/hugo/releases), make sure
+  you download the `_extended` version which supports SCSS.
 
-## We ask you, humbly, to support this open source movement
+- Install `PostCSS` so that the site build can create the final CSS assets. You
+  can install it locally by running the following commands from the root
+  directory of your project:
 
-Today we ask you to defend the open source independence of the Wowchemy website builder and themes 🐧
+  ```console
+  $ npm install --save-dev autoprefixer
+  $ npm install --save-dev postcss-cli
+  ```
+  
+  Starting in [version 8 of `postcss-cli`](https://github.com/postcss/postcss-cli/blob/master/CHANGELOG.md),
+  you must also separately install `postcss`:
 
-We're an open source movement that depends on your support to stay online and thriving, but 99.9% of our creators don't give; they simply look the other way.
+  ```bash
+  npm install -D postcss
+  ```
+  
+Any additional prerequisites depend on the [installation option](https://www.docsy.dev/docs/get-started/#installation-options)
+you choose. We recommend using Docsy as a Hugo module, which requires that
+you have the `go` language installed in addition to Hugo and PostCSS.
 
-### [❤️ Click here to become a GitHub Sponsor, unlocking awesome perks such as _exclusive academic templates and widgets_](https://github.com/sponsors/gcushen)
+For complete prerequisites and instructions, see our [Get started guides](https://www.docsy.dev/docs/get-started/).
+
+## Example and usage
+
+You can find an example project that uses Docsy in the [Docsy Example Project
+repo](https://github.com/google/docsy-example).The Docsy Example Project is
+hosted at [example.docsy.dev](https://example.docsy.dev). For
+real-life examples of sites that use Docsy (and their source repos), see our
+[Examples](https://www.docsy.dev/docs/examples/) page.
+
+To use the Docsy theme for your own site:
+
+- (Recommended) Use the [example
+  project](https://github.com/google/docsy-example), which includes the Docsy
+  theme as a Hugo module, as a template to create your project. You can customize
+  this pre-configured basic site into your own Docsy themed site. [Learn
+  more...](https://github.com/google/docsy-example)
+
+- Add Docsy to your existing Hugo site. You can
+  add Docsy as a Hugo module, as a Git submodule, or clone the Docsy theme into your
+  project.
+
+See the [Get started guides](https://www.docsy.dev/docs/get-started/)
+for details about the various usage options.
+
+## Documentation
+
+Docsy has its own user guide (using Docsy, of course!) with lots more
+information about using the theme. It is hosted by [Netlify][] at
+[docsy.dev](https://docsy.dev). For deploy logs and more, see [Deploys][] from
+the site's Netlify dashboard.
+
+Alternatively you can use Hugo to generate and serve a local copy of the guide
+(also useful for testing local theme changes), making sure you have installed
+all the prerequisites listed above:
+
+```console
+$ git clone --depth 1 https://github.com/google/docsy.git
+$ cd docsy/userguide/
+$ npm install
+$ npm run serve
+```
+
+## Contributing ![GitHub](https://img.shields.io/github/contributors/google/docsy)
+
+Please read
+[CONTRIBUTING.md](https://github.com/google/docsy/blob/main/CONTRIBUTING.md)
+for details on our code of conduct, and the process for submitting pull requests
+to us. See also the list of
+[contributors](https://github.com/google/docsy/graphs/contributors) who
+participated in this project.
+
+## License ![GitHub](https://img.shields.io/github/license/google/docsy)
+
+This project is licensed under the Apache License 2.0 - see the
+[LICENSE.md](https://github.com/google/docsy/blob/main/LICENSE) file for
+details
+
+[Deploys]: https://app.netlify.com/sites/docsydocs/deploys
+[Netlify]: https://netlify.com
