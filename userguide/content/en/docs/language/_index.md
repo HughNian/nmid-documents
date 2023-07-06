@@ -21,14 +21,14 @@ defaultContentLanguageInSubdir = false
 ...
 [languages]
 [languages.en]
-title = "Docsy"
-description = "Docsy does docs"
+title = "nmid"
+description = "nmid does docs"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 [languages.no]
-title = "Docsy"
-description = "Docsy er operativsystem for skyen"
+title = "nmid"
+description = "nmid er operativsystem for skyen"
 languageName ="Norsk"
 contentDir = "content/no"
 time_format_default = "02.01.2006"
@@ -41,12 +41,12 @@ defaultContentLanguageInSubdir: false
 …
 languages:
   en:
-    title: Docsy
+    title: nmid
     description: Docsy does docs
     languageName: English
     weight: 1 # used for sorting
   'no':
-    title: Docsy
+    title: nmid
     description: Docsy er operativsystem for skyen
     languageName: Norsk
     contentDir: content/no
@@ -60,13 +60,13 @@ languages:
   "defaultContentLanguageInSubdir": false,
   "languages": {
     "en": {
-      "title": "Docsy",
-      "description": "Docsy does docs",
+      "title": "nmid",
+      "description": "nmid does docs",
       "languageName": "English",
       "weight": 1
     },
     "no": {
-      "title": "Docsy",
+      "title": "nmid",
       "description": "Docsy er operativsystem for skyen",
       "languageName": "Norsk",
       "contentDir": "content/no",
