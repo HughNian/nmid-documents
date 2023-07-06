@@ -50,13 +50,13 @@ markup:
     style: tango
 
 params:
-  copyright: The Docsy Authors
-  privacy_policy: https://policies.google.com/privacy
+  copyright: The nmid Authors
+  privacy_policy: https://github.com/hughnian/nmid
   version_menu: Releases
   archived_version: false
   version: 0.7.1
   url_latest_version: https://example.com
-  github_repo: https://github.com/google/docsy
+  github_repo: https://github.com/hughnian/nmid
   github_project_repo: https://github.com/google/docsy
   github_subdir: userguide
   time_format_blog: Monday, January 02, 2006
@@ -89,7 +89,7 @@ params:
   links:
     user:
       - name: GitHub Discussions
-        url: https://github.com/google/docsy/discussions
+        url: https://github.com/hughnian/nmid
         icon: fa-brands fa-github
         desc: Discussion and help from your fellow users
       - name: User mailing list
@@ -106,7 +106,7 @@ params:
         desc: Practical questions and curated answers
     developer:
       - name: GitHub
-        url: https://github.com/google/docsy
+        url: https://github.com/hughnian/nmid
         icon: fa-brands fa-github
         desc: Development takes place here!
 

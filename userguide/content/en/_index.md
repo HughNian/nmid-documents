@@ -14,14 +14,10 @@ description: A golang micro service & rpc framework
 {{% blocks/link-down color="info" %}}
 {{% /blocks/cover %}}
 
-{{% blocks/lead color="primary" %}}
+{{% blocks/lead color="1" %}}
 👏👏Go微服务框架、调度服务 (dispatch anywhere)  
 
 🤟🤟nmid意思为中场指挥官，足球场上的中场就是统领进攻防守的核心。这里是服务的调度核心。一个轻量级分布式微服务RPC框架。 
-
-<a href="https://www.netlify.com" target="_blank" rel="noopener">
-  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" />
-</a>
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" type="row" %}}
