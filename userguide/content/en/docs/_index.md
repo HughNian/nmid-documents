@@ -1,7 +1,7 @@
 
 ---
-title: Welcome to Docsy
-linkTitle: Documentation
+title: Welcome to nmid
+linkTitle: 文档
 menu: {main: {weight: 20}}
 ---
 
