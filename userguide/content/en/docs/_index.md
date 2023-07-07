@@ -1,7 +1,7 @@
 
 ---
 title: Welcome to nmid
-linkTitle: 文档
+linkTitle: Documentation
 menu: {main: {weight: 20}}
 ---
 
