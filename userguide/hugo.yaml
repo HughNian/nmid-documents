@@ -1,5 +1,5 @@
 baseURL: /
-title: &title nmid
+title: &title nmid framework
 description: &desc nmid micro service & rpc framework
 enableRobotsTXT: true
 theme: [docsy]
