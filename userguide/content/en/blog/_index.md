@@ -1,4 +1,4 @@
 ---
-title: 博客
-menu: {main: {weight: 50}}
+# title: 博客
+# menu: {main: {weight: 50}}
 ---
