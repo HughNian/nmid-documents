@@ -92,23 +92,23 @@ params:
         url: https://github.com/hughnian/nmid
         icon: fa-brands fa-github
         desc: Discussion and help from your fellow users
-      - name: User mailing list
-        url: https://groups.google.com/forum/#!forum/docsy-users
-        icon: fa-solid fa-envelope
-        desc: Sign up for Docsy announcements
-      - name: Twitter
-        url: https://twitter.com/docsydocs
-        icon: fa-brands fa-twitter
-        desc: Follow us on Twitter to get the latest news!
-      - name: Stack Overflow
-        url: https://stackoverflow.com/questions/tagged/docsy
-        icon: fa-brands fa-stack-overflow
-        desc: Practical questions and curated answers
+      # - name: User mailing list
+      #   url: https://groups.google.com/forum/#!forum/docsy-users
+      #   icon: fa-solid fa-envelope
+      #   desc: Sign up for Docsy announcements
+      # - name: Twitter
+      #   url: https://twitter.com/docsydocs
+      #   icon: fa-brands fa-twitter
+      #   desc: Follow us on Twitter to get the latest news!
+      # - name: Stack Overflow
+      #   url: https://stackoverflow.com/questions/tagged/docsy
+      #   icon: fa-brands fa-stack-overflow
+      #   desc: Practical questions and curated answers
     developer:
-      - name: GitHub
-        url: https://github.com/hughnian/nmid
-        icon: fa-brands fa-github
-        desc: Development takes place here!
+      # - name: GitHub
+      #   url: https://github.com/hughnian/nmid
+      #   icon: fa-brands fa-github
+      #   desc: Development takes place here!
 
   plantuml:
     enable: true

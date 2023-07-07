@@ -11,11 +11,14 @@ description: A golang micro service & rpc framework
 <a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases" target="_blank">Get started</a>
 {.p-initial .my-5}
 
+<span class="js-github-release" data-repo="HughNian/nmid">
+  Project version will appear here<!-- Automatically filled based on data-repo value -->
+</span>
+
 <span style="margin-top:25px;margin-bottom:15px">
 <a class="github-button" href="https://github.com/HughNian/nmid" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star nmid">Star nmid</a>
 <a class="github-button" href="https://github.com/HughNian/nmid-c" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star nmid-c">Star nmid-c</a>
 <a class="github-button" href="https://github.com/HughNian/nmid-php-ext" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star nmid-php-ext">Star nmid-php-ext</a>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
 </span>
 
 
@@ -23,8 +26,8 @@ description: A golang micro service & rpc framework
 {{% /blocks/cover %}}
 
 {{% blocks/lead color="1" %}}
-👏👏Go微服务框架、调度服务 (dispatch anywhere)  
-
+👏👏Golang微服务、rpc框架、k8s sidecar、serverless函数
+<br />
 🤟🤟nmid意思为中场指挥官，足球场上的中场就是统领进攻防守的核心。这里是服务的调度核心。一个轻量级分布式微服务RPC框架。 
 {{% /blocks/lead %}}
 
