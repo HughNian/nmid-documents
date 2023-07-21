@@ -3,6 +3,7 @@ title: nmid
 description: A golang micro service framework
 ---
 
+<center><img src="images/logo-removebg.png" alt="nmid Logo" width="200" height="200" style="max-width: 100%;"></center>
 {{% blocks/cover title="Welcome to nmid" image_anchor="top" height="full" %}}
 {{% param description %}}
 {.display-6}
