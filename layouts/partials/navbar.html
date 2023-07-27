@@ -10,7 +10,11 @@
   <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
     {{- /**/ -}}
     <span class="navbar-brand__logo navbar-logo">
-      <img class="td-cover-logo" src="logo-removebg.png" alt="{{ $title | html }} Logo">
+      {{- if ne .Site.Params.ui.navbar_logo false -}}
+        {{ with resources.Get "logo-removebg.png" -}}
+          {{ ( . | minify).Content | safeHTML -}}
+        {{ end -}}
+      {{ end -}}
     </span>
     {{- /**/ -}}
     <span class="navbar-brand__name">
