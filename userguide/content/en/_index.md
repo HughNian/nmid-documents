@@ -40,7 +40,7 @@ description: A golang micro service framework
 
 
 {{% blocks/feature icon="fa-brands fa-github" title="nmidframe" %}}
-[nmid-frame](https://github.com/nmid-team/goframe)nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务
+[nmid-frame](https://github.com/nmid-team/goframe)是nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务。
 {{% /blocks/feature %}}
 
 
