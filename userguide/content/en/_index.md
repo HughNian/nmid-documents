@@ -29,7 +29,7 @@ description: A golang micro service framework
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fa-brands fa-github" title="nparword" %}}
+{{% blocks/feature icon="fa-brands fa-github" title="npartword" %}}
 [nparword](https://github.com/HughNian/npartword)中文分词服务，使用 **nmid** 作为worker可以向外部提供分词服务。
 {{% /blocks/feature %}}
 
@@ -39,7 +39,7 @@ description: A golang micro service framework
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-brands fa-github" title="nmidframe" %}}
+{{% blocks/feature icon="fa-brands fa-github" title="nmid-frame" %}}
 [nmid-frame](https://github.com/nmid-team/goframe)是nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务。
 {{% /blocks/feature %}}
 
