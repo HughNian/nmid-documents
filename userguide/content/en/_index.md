@@ -35,12 +35,12 @@ description: A golang micro service framework
 
 
 {{% blocks/feature icon="fa-brands fa-github" title="nsearch" %}}
-[Pull Request](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服务，作为搜索时所用分词功能。
+[nsearch](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服务，作为搜索时所用分词功能。
 {{% /blocks/feature %}}
 
 
 {{% blocks/feature icon="fa-brands fa-github" title="nmidframe" %}}
-[nmidframe](https://github.com/nmid-team/goframe)nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务
+[nmid-frame](https://github.com/nmid-team/goframe)nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务
 {{% /blocks/feature %}}
 
 
