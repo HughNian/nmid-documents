@@ -29,18 +29,19 @@ description: A golang micro service framework
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fa-lightbulb" title="See Docsy in action!" url="/docs/examples/" %}}
-As well as our example site, there's a growing number of projects using Docsy for their doc sites.
+{{% blocks/feature icon="fa-brands fa-github" title="nparword" %}}
+[nparword](https://github.com/HughNian/npartword)中文分词服务，使用 **nmid** 作为worker可以向外部提供分词服务。
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-brands fa-github" title="Contributions welcome!" url="https://github.com/HughNian/nmid" %}}
-We do a [Pull Request](https://github.com/HughNian/nmid) contributions workflow on **GitHub**. New users are always welcome!
+{{% blocks/feature icon="fa-brands fa-github" title="nsearch" %}}
+[Pull Request](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服务，作为搜索时所用分词功能。
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-brands fa-twitter" title="Follow us on Twitter!" url="https://twitter.com/docsydocs" %}}
-Find out about new features and how our users are using Docsy.
+{{% blocks/feature icon="fa-brands fa-github" title="nmidframe" %}}
+[nmidframe](https://github.com/nmid-team/goframe)nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务
 {{% /blocks/feature %}}
+
 
 {{% /blocks/section %}}
