@@ -35,7 +35,7 @@ description: A golang micro service framework
 
 
 {{% blocks/feature icon="fa-brands fa-github" title="nsearch" %}}
-[nsearch](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服务，作为搜索时所用分词功能。
+[nsearch](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服。
 {{% /blocks/feature %}}
 
 
