@@ -11,4 +11,6 @@ menu: {main: {weight: 20}}
 
 <img src="/images/nmid-architecture.png" alt="nmid architecture"/>
 
+## nmid作为K8S sidecar架构
 
+<img src="/images/nmid-sidecar.png" alt="nmid architecture"/>
