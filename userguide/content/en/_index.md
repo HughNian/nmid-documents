@@ -29,10 +29,18 @@ description: A golang micro service framework
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fa-brands fa-github" title="npartword" %}}
-[nparword](https://github.com/HughNian/npartword)中文分词服务，使用 **nmid** 作为worker可以向外部提供分词服务。
-{{% /blocks/feature %}}
 
+<div class="col-lg-4 mb-5 mb-lg-0 text-center">
+    <div>
+        <i><img src="/images/npartword_logo-removebg.png" style="width:150px;height:150px"></i>
+    </div>
+    <h4 class="h3">
+        npartword
+    </h4>
+    <div class="mb-0">
+        <a href="https://github.com/HughNian/npartword">npartword</a>中文分词服务，使用 **nmid** 作为worker可以向外部提供分词服务。
+    </div>
+</div>
 
 {{% blocks/feature icon="fa-brands fa-github" title="nsearch" %}}
 [nsearch](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服。
