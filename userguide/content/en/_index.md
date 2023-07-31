@@ -44,7 +44,7 @@ description: A golang micro service framework
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
     <div>
-        <i><img src="nsearch_logo-removebg.png" style="width:150px;height:150px"></i>
+        <i><img src="nsearch_logo-removebg.png" style="width:180px;height:150px"></i>
     </div>
     <h4 class="h3">
         nsearch
