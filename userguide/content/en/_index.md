@@ -38,18 +38,32 @@ description: A golang micro service framework
         npartword
     </h4>
     <div class="mb-0">
-        <a href="https://github.com/HughNian/npartword">npartword</a>中文分词服务，使用 **nmid** 作为worker可以向外部提供分词服务。
+        <a href="https://github.com/HughNian/npartword" style="color:#bdd7fe">npartword</a>中文分词服务，使用 <b>nmid</b> 作为worker可以向外部提供分词服务。
     </div>
 </div>
 
-{{% blocks/feature icon="fa-brands fa-github" title="nsearch" %}}
-[nsearch](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服。
-{{% /blocks/feature %}}
+<div class="col-lg-4 mb-5 mb-lg-0 text-center">
+    <div>
+        <i><img src="nsearch_logo-removebg.png" style="width:150px;height:150px"></i>
+    </div>
+    <h4 class="h3">
+        npartword
+    </h4>
+    <div class="mb-0">
+        <a href="https://github.com/HughNian/nsearch" style="color:#bdd7fe">nsearch</a>全文搜索服务，使用 <b>nmid</b>作为worker可以向外部提供全文搜索服务，同时通过<b>nmid</b>使用npartword的worker的分词服务。
+    </div>
+</div>
 
-
-{{% blocks/feature icon="fa-brands fa-github" title="nmid-frame" %}}
-[nmid-frame](https://github.com/nmid-team/goframe)是nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务。
-{{% /blocks/feature %}}
-
+<div class="col-lg-4 mb-5 mb-lg-0 text-center">
+    <div>
+        <i><img src="nmid-frame_logo-removebg.png" style="width:120px;height:150px"></i>
+    </div>
+    <h4 class="h3">
+        npartword
+    </h4>
+    <div class="mb-0">
+        <a href="https://github.com/nmid-team/goframe" style="color:#bdd7fe">nmid-frame</a>是nmid的golang应用开发框架，可以方便迅速的开发基于<b>nmid</b>的web应用或者是独立<b>nmid</b>worker服务。
+    </div>
+</div>
 
 {{% /blocks/section %}}
