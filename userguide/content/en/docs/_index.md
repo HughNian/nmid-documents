@@ -7,7 +7,7 @@ menu: {main: {weight: 20}}
 
 欢迎使用nmid微服务框架
 
-## nmid架构
+## nmid经典架构
 
 <img src="/images/nmid-architecture.png" alt="nmid architecture"/>
 
