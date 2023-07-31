@@ -47,7 +47,7 @@ description: A golang micro service framework
         <i><img src="nsearch_logo-removebg.png" style="width:150px;height:150px"></i>
     </div>
     <h4 class="h3">
-        npartword
+        nsearch
     </h4>
     <div class="mb-0">
         <a href="https://github.com/HughNian/nsearch" style="color:#bdd7fe">nsearch</a>全文搜索服务，使用 <b>nmid</b>作为worker可以向外部提供全文搜索服务，同时通过<b>nmid</b>使用npartword的worker的分词服务。
@@ -56,10 +56,10 @@ description: A golang micro service framework
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
     <div>
-        <i><img src="nmid-frame_logo-removebg.png" style="width:120px;height:150px"></i>
+        <i><img src="nmid-frame_logo-removebg.png" style="width:350px;height:150px"></i>
     </div>
     <h4 class="h3">
-        npartword
+        nmid-frame
     </h4>
     <div class="mb-0">
         <a href="https://github.com/nmid-team/goframe" style="color:#bdd7fe">nmid-frame</a>是nmid的golang应用开发框架，可以方便迅速的开发基于<b>nmid</b>的web应用或者是独立<b>nmid</b>worker服务。
