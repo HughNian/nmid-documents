@@ -29,17 +29,17 @@ description: A golang micro service framework
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fa-brands fa-github" title="npartword" %}}
+{{% blocks/feature icon="fa-brands fa-github" title="npartword" logo_image="/images/npartword_logo-removebg.png" %}}
 [nparword](https://github.com/HughNian/npartword)中文分词服务，使用 **nmid** 作为worker可以向外部提供分词服务。
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-brands fa-github" title="nsearch" %}}
+{{% blocks/feature icon="fa-brands fa-github" title="nsearch" logo_image="/images/nsearch_logo-removebg.png" %}}
 [nsearch](https://github.com/HughNian/nsearch)全文搜索服务，使用 **nmid** 作为worker可以向外部提供全文搜索服务，同时使用**nmid**npartword的worker的分词服。
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-brands fa-github" title="nmid-frame" %}}
+{{% blocks/feature icon="fa-brands fa-github" title="nmid-frame" logo_image="/images/nsearch_logo-removebg.png" %}}
 [nmid-frame](https://github.com/nmid-team/goframe)是nmid的golang应用开发框架，可以方便迅速的开发基于**nmid**的web应用或者是独立**nmid**worker服务。
 {{% /blocks/feature %}}
 
