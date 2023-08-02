@@ -9,7 +9,11 @@ menu: {main: {weight: 20}}
 
 ## nmid经典架构
 
-<img src="/images/nmid-architecture.png" alt="nmid architecture"/>
+<img src="/images/nmid-architecture.png" alt="nmid architecture"/>  
+
+## nmid-discovery架构  
+
+<img src="/images/nmid-discovery.png" alt="nmid architecture"/>  
 
 ## nmid作为K8S sidecar架构
 
