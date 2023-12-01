@@ -23,8 +23,8 @@ description: A golang micro service framework
 
 {{% blocks/lead color="1" %}}
 👏👏Golang微服务框架、rpc框架、k8s sidecar、serverless函数👋👋  
-
-🤟🤟nmid意思为中场指挥官，足球场上的中场就是统领进攻防守的核心。这里是服务的调度核心。一个轻量级分布式微服务RPC框架。🖖🖖 
+<br />
+nmid意思为中场指挥官，足球场上的中场就是统领进攻防守的核心。这里是服务的调度核心。一个轻量级分布式微服务RPC框架。
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" type="row" %}}
