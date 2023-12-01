@@ -13,14 +13,23 @@
 {{ $promo_image_small := (.Fill (printf "960x540 %s" $image_anchor)) -}}
 <link rel="preload" as="image" href="{{ $promo_image_small.RelPermalink }}" media="(max-width: 1200px)">
 <link rel="preload" as="image" href="{{ $promo_image_big.RelPermalink }}" media="(min-width: 1200px)">
+<style>
+#{{ $blockID }} {
+  background-image: url({{ $promo_image_small.RelPermalink }});
+}
+@media only screen and (min-width: 1200px) {
+  #{{ $blockID }} {
+    background-image: url({{ $promo_image_big.RelPermalink }});
+  }
+}
+</style>
 {{ end -}}
 
-<div id="{{ $blockID }}" style="--bs-gutter-x: 1.5rem;--bs-gutter-y: 0;display: flex;flex-wrap: wrap;margin-top:calc(-1 * var(--bs-gutter-y));margin-right: calc(-1.5 * var(--bs-gutter-x));margin-left: calc(-1.5 * var(--bs-gutter-x));">
-  <video playsinline="" autoplay="" muted="" loop="" style="width:100%">
-    <source src="https://player.vimeo.com/external/269346850.sd.mp4?s=0e47d6bbc49002405ce702e19f57597b18611a96&amp;profile_id=164&amp;oauth2_token_id=57447761" type="video/mp4">
-  </video>
+<section id="{{ $blockID }}" class="row td-cover-block td-cover-block--height-{{ $height -}}
+  {{ if not .Site.Params.ui.navbar_translucent_over_cover_disable }} js-td-cover
+  {{- end }} td-overlay td-overlay--dark -bg-{{ $col_id }}">
   <div class="col-12">
-    <div class="container td-overlay__inner" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color:#fff;">
+    <div class="container td-overlay__inner">
       <div class="text-center">
         <center><img src="logo-removebg.png" alt="nmid Logo" width="350" height="350" style="max-width: 100%;"></center>
         {{ with .Get "title" }}<h1 class="display-1 mt-0 pb-4">{{ $title := . }}{{ with $logo_image }}{{ $logo_image_resized := (.Fit (printf "70x70 %s" $logo_anchor)) }}{{ end }}{{ $title | html }}</h1>{{ end }}
@@ -38,5 +47,5 @@
   {{ with .Get "byline" | default "" -}}
     <div class="byline">{{ . }}</div>
   {{- end }}
-</div>
+</section>
 {{/**/ -}}
