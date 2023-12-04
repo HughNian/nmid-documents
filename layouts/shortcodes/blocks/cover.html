@@ -20,7 +20,7 @@
     <source src="bgvideo.mp4" poster="featured-background.jpg" type="video/mp4">
   </video>
   <div class="col-12">
-    <div class="container td-overlay__inner" style="position:relative; left:0; top:0;margin-top:-1050px; color:#fff;">
+    <div class="container td-overlay__inner" style="position:relative; left:0; top:0;margin-top:-1100px; color:#fff;">
       <div class="text-center">
         <center><img src="logo-removebg.png" alt="nmid Logo" width="350" height="350" style="max-width: 100%;"></center>
         {{ with .Get "title" }}<h1 class="display-1 mt-0 pb-4">{{ $title := . }}{{ with $logo_image }}{{ $logo_image_resized := (.Fit (printf "70x70 %s" $logo_anchor)) }}{{ end }}{{ $title | html }}</h1>{{ end }}
