@@ -4,12 +4,12 @@ linkTitle: 关于
 menu: {main: {weight: 10}}
 ---
 
-{{% blocks/about title="About nmid" height="auto" %}} 
+{{% blocks/cover title="About nmid" height="auto" %}} 
 
 nmid是golang实现的轻量级的分布式微服务框架，主要有服务调度服务端，服务调用客户端（Consumer），服务提供工作端（Provider）。主要向用户提供跨进程的RPC远程调用能力，同时可以结合K8S使其成为sidecar，为service提供流量代理等功能。nmid本身是以函数为最小单元的服务提供，所以也可以成为一个轻型的faas服务。
 
 通过这里查看文档 [documentation](/docs/) to get started!
-{{% /blocks/about %}}
+{{% /blocks/cover %}}
 
 {{% blocks/section color="primary" %}}
 ## nmid目录结构   
