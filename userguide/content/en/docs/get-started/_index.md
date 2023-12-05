@@ -1,6 +1,6 @@
 
 ---
-title: Get started
+title: 🚀Get started
 weight: 8
 aliases: [/docs/getting-started/]
 date: 2018-07-30

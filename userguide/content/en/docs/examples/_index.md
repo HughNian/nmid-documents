@@ -1,7 +1,7 @@
 ---
-title: 列子
+title: 🌰例子
 weight: 2
-description: Some examples of Docsy in action!
+description: 一些简单的🌰例子
 ---
 
 nmid的使用包含client和worker
@@ -74,6 +74,8 @@ func main() {
 
 
 ## Worker
+
+普通golang代码中运行
 
 ```go
 const NMIDSERVERHOST = "127.0.0.1"
