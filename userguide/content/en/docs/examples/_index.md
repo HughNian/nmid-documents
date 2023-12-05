@@ -1,46 +1,143 @@
 ---
-title: Examples
+title: 列子
 weight: 8
 description: Some examples of Docsy in action!
 ---
 
-One of the best ways to see what Docsy can do, and learn how to configure a site with it, is to see some real projects. In addition to our provided Docsy Example Project, there are several live sites already using the theme. Please add your own examples once you've got a production site up and running with Docsy!
+一般nmid的使用包含client和worker
 
-## Docsy theme examples
+## Client
 
-Example sites that have low to no customization:
+普通golang代码中运行
 
-| Site  | Repo |
-|---|---|
-| [This Docsy documentation site](/docs) | https://github.com/google/docsy |
-| ["Goldydocs" - a Docsy example site](https://example.docsy.dev) | https://github.com/google/docsy-example  |
-| https://www.kubeflow.org/  | https://github.com/kubeflow/website  |
-| https://agones.dev/site/ | https://github.com/googleforgames/agones/tree/main/site |
-| https://googlecontainertools.github.io/kpt/ | https://github.com/GoogleContainerTools/kpt/tree/main/docs |
-| [Navidrome Music Server](https://www.navidrome.org) | https://github.com/navidrome/website |
-| https://docs.agilebase.co.uk/ | https://github.com/okohll/abdocs |
-| https://jvmperf.net/ | https://github.com/cchesser/java-perf-workshop |
-| [gRPC](https://www.grpc.io/) | https://github.com/grpc/grpc.io |
-| [tekton.dev](https://tekton.dev/) | https://github.com/tektoncd |
-| [fluxcd.io](https://fluxcd.io) | https://github.com/fluxcd/website |
-| [Graphviz](https://graphviz.org) | https://gitlab.com/graphviz/graphviz.gitlab.io |
-| [Cloudpods](https://www.cloudpods.org) | https://github.com/yunionio/docs |
-| [Selenium](https://www.selenium.dev/) | https://github.com/SeleniumHQ/seleniumhq.github.io |
-| [fission.io](https://fission.io/) | https://github.com/fission/fission.io |
-| [Stroom](https://gchq.github.io/stroom-docs) | https://github.com/gchq/stroom-docs |
-| [OpenTelemetry](https://opentelemetry.io) | https://github.com/open-telemetry/opentelemetry.io |
-| [CloudWeGo](https://www.cloudwego.io/) | https://github.com/cloudwego/cloudwego.github.io |
-| [etcd](https://etcd.io/) | https://github.com/etcd-io/website |
-| [protobuf.dev](https://protobuf.dev) | https://github.com/protocolbuffers/protocolbuffers.github.io |
+```go
+const SERVERHOST = "127.0.0.1"
+const SERVERPORT = "6808"
 
-## Customized Docsy examples
+func main() {
+	var client *cli.Client
+	var err error
 
-Example sites that include a moderate to high amount of customization:
+	serverAddr := SERVERHOST + ":" + SERVERPORT
+	client, err = cli.NewClient("tcp", serverAddr).Start()
+	if nil == client || err != nil {
+		log.Println(err)
+		return
+	}
+	defer client.Close()
 
-| Site  | Repo |
-|---|---|
-| [Apache Airflow](https://airflow.apache.org/) | https://github.com/apache/airflow-site/ |
-| [Docsy Mostly Docs](https://mostlydocs.netlify.app/) | https://github.com/gwatts/mostlydocs/ |
-| [Kubernetes](https://kubernetes.io) | https://github.com/kubernetes/website |
-| [XLT](https://xltdoc.xceptance.com/) | https://github.com/Xceptance/xlt-documentation |
-| [Dapr](https://docs.dapr.io/) | https://github.com/dapr/docs |
+	client.ErrHandler = func(e error) {
+		if model.RESTIMEOUT == e {
+			log.Println("time out here")
+		} else {
+			log.Println(e)
+		}
+		fmt.Println("client err here")
+	}
+
+	respHandler := func(resp *cli.Response) {
+		if resp.DataType == model.PDT_S_RETURN_DATA && resp.RetLen != 0 {
+			if resp.RetLen == 0 {
+				log.Println("ret empty")
+				return
+			}
+
+			var retStruct model.RetStruct
+			err := msgpack.Unmarshal(resp.Ret, &retStruct)
+			if nil != err {
+				log.Fatalln(err)
+				return
+			}
+
+			if retStruct.Code != 0 {
+				log.Println(retStruct.Msg)
+				return
+			}
+
+			fmt.Println(string(retStruct.Data))
+		}
+	}
+
+	paramsName1 := make(map[string]interface{})
+	paramsName1["name"] = "nmid"
+	params1, err := msgpack.Marshal(&paramsName1)
+	if err != nil {
+		log.Fatalln("params msgpack error:", err)
+		os.Exit(1)
+	}
+	err = client.Do("toUpper", params1, respHandler)
+	if nil != err {
+		fmt.Println(err)
+	}
+}
+```
+
+
+## Worker
+
+```go
+const NMIDSERVERHOST = "127.0.0.1"
+const NMIDSERVERPORT = "6808"
+
+func ToUpper(job wor.Job) ([]byte, error) {
+	resp := job.GetResponse()
+	if nil == resp {
+		return []byte(``), fmt.Errorf("response data error")
+	}
+
+	if len(resp.ParamsMap) > 0 {
+		name := resp.ParamsMap["name"].(string)
+
+		retStruct := model.GetRetStruct()
+		retStruct.Msg = "ok"
+		retStruct.Data = []byte(strings.ToUpper(name))
+		ret, err := msgpack.Marshal(retStruct)
+		if nil != err {
+			return []byte(``), err
+		}
+
+		resp.RetLen = uint32(len(ret))
+		resp.Ret = ret
+
+		return ret, nil
+	}
+
+	return nil, fmt.Errorf("response data error")
+}
+
+func main() {
+	wname := "Worker1"
+
+	var worker *wor.Worker
+	var err error
+
+	serverAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
+	worker = wor.NewWorker().SetWorkerName(wname)
+	err = worker.AddServer("tcp", serverAddr)
+	if err != nil {
+		log.Fatalln(err)
+		worker.WorkerClose()
+		return
+	}
+
+	worker.AddFunction("ToUpper", ToUpper)
+	//register to discovery server
+	worker.Register(wor.EtcdConfig{Addrs: discoverys, Username: disUsername, Password: disPassword})
+
+	if err = worker.WorkerReady(); err != nil {
+		log.Fatalln(err)
+		worker.WorkerClose()
+		return
+	}
+
+	go worker.WorkerDo()
+
+	quits := make(chan os.Signal, 1)
+	signal.Notify(quits, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT /*syscall.SIGUSR1*/)
+	switch <-quits {
+	case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
+		worker.WorkerClose()
+	}
+}
+
+```
