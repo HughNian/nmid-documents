@@ -1,10 +1,10 @@
 ---
 title: 列子
-weight: 8
+weight: 1
 description: Some examples of Docsy in action!
 ---
 
-一般nmid的使用包含client和worker
+nmid的使用包含client和worker
 
 ## Client
 
@@ -65,7 +65,7 @@ func main() {
 		log.Fatalln("params msgpack error:", err)
 		os.Exit(1)
 	}
-	err = client.Do("toUpper", params1, respHandler)
+	err = client.Do("ToUpper", params1, respHandler)
 	if nil != err {
 		fmt.Println(err)
 	}
