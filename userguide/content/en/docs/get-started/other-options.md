@@ -3,7 +3,7 @@ title: Other setup options
 description: Create a new Docsy site with Docsy using Git or NPM
 date: 2021-12-08T09:22:27+01:00
 spelling: cSpell:ignore docsy gohugo hugo myproject
-weight: 2
+weight: 0
 ---
 
 If you don't want to use

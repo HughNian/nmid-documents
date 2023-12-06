@@ -1,6 +1,6 @@
 ---
 title: Previews and Deployment
-weight: 7
+weight: 0
 description: Deploying your Docsy site.
 ---
 

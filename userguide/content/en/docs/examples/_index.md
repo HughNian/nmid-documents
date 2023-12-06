@@ -1,7 +1,7 @@
 ---
 title: 🌰例子
 weight: 2
-description: 一些简单的🌰例子
+description:
 ---
 
 nmid的使用包含client和worker

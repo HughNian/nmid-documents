@@ -2,7 +2,7 @@
 ---
 title: "Deploy Docsy inside a Docker container"
 linkTitle: "Deploy Docsy inside a Docker container"
-weight: 3
+weight: 0
 date: 2018-07-30
 description: >
   Instructions on how to setup and run a local Docsy site with Docker.

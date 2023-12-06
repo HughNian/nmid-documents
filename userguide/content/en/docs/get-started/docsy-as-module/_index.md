@@ -1,7 +1,7 @@
 ---
 title: "Use Docsy as a Hugo Module"
 linkTitle: "Use Docsy as a Hugo Module"
-weight: 1
+weight: 0
 date: 2021-12-08T10:33:16+01:00
 description: >
   Learn how to get started with Docsy by using the theme as a Hugo Module.
