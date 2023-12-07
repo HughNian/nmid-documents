@@ -1,111 +1,267 @@
 ---
-title: "Multi-language Support"
-linkTitle: "Multi-language Support"
-weight: 7
-description: >
-  Support multiple languages in your site.
+title: "🌙SkyWalking例子"
+linkTitle: "🌙SkyWalking例子"
+weight: 1
+description:
 ---
 
-If you'd like to provide site content in multiple languages, the Docsy theme and Hugo make it easy to both add your translated content and for your users to navigate between language versions.
+## Client
 
-## Content and configuration
+普通golang代码中运行
 
-To add content in multiple languages, you first need to define the available languages in a `languages` section in your site configuration. Each language can have its own language-specific configuration. For example, the Docsy Example Site config specifies that it provides content in English and Norwegian, and that the language version visitors will see by default is English:
+```go
+const SERVERHOST = "127.0.0.1"
+const SERVERPORT = "6808"
 
-{{< tabpane persistLang=false >}}
-{{< tab header="Configuration file:" disabled=true />}}
-{{< tab header="hugo.toml" lang="toml" >}}
-contentDir = "content/en"
-defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = false
-...
-[languages]
-[languages.en]
-title = "nmid"
-description = "nmid does docs"
-languageName ="English"
-# Weight used for sorting.
-weight = 1
-[languages.no]
-title = "nmid"
-description = "nmid er operativsystem for skyen"
-languageName ="Norsk"
-contentDir = "content/no"
-time_format_default = "02.01.2006"
-time_format_blog = "02.01.2006"
-{{< /tab >}}
-{{< tab header="hugo.yaml" lang="yaml" >}}
-contentDir: content/en
-defaultContentLanguage: en
-defaultContentLanguageInSubdir: false
-…
-languages:
-  en:
-    title: nmid
-    description: Docsy does docs
-    languageName: English
-    weight: 1 # used for sorting
-  'no':
-    title: nmid
-    description: Docsy er operativsystem for skyen
-    languageName: Norsk
-    contentDir: content/no
-    time_format_default: 02.01.2006
-    time_format_blog: 02.01.2006
-{{< /tab >}}
-{{< tab header="hugo.json" lang="json" >}}
-{
-  "contentDir": "content/en",
-  "defaultContentLanguage": "en",
-  "defaultContentLanguageInSubdir": false,
-  "languages": {
-    "en": {
-      "title": "nmid",
-      "description": "nmid does docs",
-      "languageName": "English",
-      "weight": 1
-    },
-    "no": {
-      "title": "nmid",
-      "description": "Docsy er operativsystem for skyen",
-      "languageName": "Norsk",
-      "contentDir": "content/no",
-      "time_format_default": "02.01.2006",
-      "time_format_blog": "02.01.2006"
-    }
-  }
+func main() {
+	var client *cli.Client
+	var err error
+
+	serverAddr := SERVERHOST + ":" + SERVERPORT
+	client, err = cli.NewClient("tcp", serverAddr).Start()
+	if nil == client || err != nil {
+		log.Println(err)
+		return
+	}
+	defer client.Close()
+
+	client.ErrHandler = func(e error) {
+		if model.RESTIMEOUT == e {
+			log.Println("time out here")
+		} else {
+			log.Println(e)
+		}
+		fmt.Println("client err here")
+	}
+
+	respHandler := func(resp *cli.Response) {
+		if resp.DataType == model.PDT_S_RETURN_DATA && resp.RetLen != 0 {
+			if resp.RetLen == 0 {
+				log.Println("ret empty")
+				return
+			}
+
+			var retStruct model.RetStruct
+			err := msgpack.Unmarshal(resp.Ret, &retStruct)
+			if nil != err {
+				log.Fatalln(err)
+				return
+			}
+
+			if retStruct.Code != 0 {
+				log.Println(retStruct.Msg)
+				return
+			}
+
+			fmt.Println(string(retStruct.Data))
+		}
+	}
+
+	paramsName1 := make(map[string]interface{})
+	paramsName1["name"] = "nmid"
+	params1, err := msgpack.Marshal(&paramsName1)
+	if err != nil {
+		log.Fatalln("params msgpack error:", err)
+		os.Exit(1)
+	}
+	err = client.Do("ToUpper", params1, respHandler)
+	if nil != err {
+		fmt.Println(err)
+	}
 }
-{{< /tab >}}
-{{< /tabpane >}}
+```
 
-Any setting not defined in a `[languages]` block will fall back to the global value for that setting: so, for example, the content directory used for the site above will be `content/en` unless the user selects the Norwegian language option.
 
-Once you've updated your site config, you create a content root directory for each language version in your source repo, such as  `content/en` for English text, and add your [content](/docs/adding-content/content/) as usual. See the [Hugo Docs](https://gohugo.io/content-management/multilingual) on multi-language support for more information.
+## Worker1
 
-{{% alert title="Attention (only when using docsy as hugo module)" color="warning" %}}
-If you have a multi language installation, please make sure that the section `[languages]` inside your [configuration file](https://gohugo.io/getting-started/configuration/#configuration-file) is declared **before** the section `[module]` with the module imports. Otherwise you will run into trouble!
-{{% /alert %}}
+worker1使用SkyWalking进行链路追踪
 
-{{% alert title="Tip" %}}
-If there's any possibility your site might be translated into other languages, consider creating your site with your content in a language-specific subdirectory, as it means you don't need to move it if you add another language.
-{{% /alert %}}
+```go
+const NMIDSERVERHOST = "127.0.0.1"
+const NMIDSERVERPORT = "6808"
 
-For adding multiple language versions of other site elements such as button text, see the [internationalization bundles](#internationalization-bundles) section below.
+func ToUpper(job wor.Job) ([]byte, error) {
+	resp := job.GetResponse()
+	if nil == resp {
+		return []byte(``), fmt.Errorf("response data error")
+	}
 
-## Selecting a language
+	if len(resp.ParamsMap) > 0 {
+		name := resp.ParamsMap["name"].(string)
 
-If you configure more than one language in your [configuration file](https://gohugo.io/getting-started/configuration/#configuration-file), the Docsy theme adds a language selector drop down to the top-level menu. Selecting a language takes the user to the translated version of the current page, or the home page for the given language.
+		retStruct := model.GetRetStruct()
+		retStruct.Msg = "ok"
+		retStruct.Data = []byte(strings.ToUpper(name))
+		ret, err := msgpack.Marshal(retStruct)
+		if nil != err {
+			return []byte(``), err
+		}
 
-## Internationalization bundles
+		resp.RetLen = uint32(len(ret))
+		resp.Ret = ret
 
-All UI strings (text for buttons, repository links, etc.) are bundled inside `/i18n` in the theme, with a `.toml` file for each language.
+		return ret, nil
+	}
 
-If your chosen language isn't currently in the theme and you create your own `.toml` file for all the common UI strings (for example, if you translate the UI text into Esperanto and create a copy of `en.toml` called `eo.toml`), we recommend you do this **in the theme** rather than in your own project. You can then open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) to contribute your translation to the Docsy community.
+	return nil, fmt.Errorf("response data error")
+}
 
-{{% alert title="Hugo Tip" %}}
-Run `hugo server --printI18nWarnings` when doing translation work, as it will give you warnings on what strings are missing.
-{{% /alert %}}
+func main() {
+	wname := "Worker1"
 
-### Create custom UI strings
+	var worker *wor.Worker
+	var err error
+    var skyReporterUrl = "192.168.10.176:11800"
 
-If any of the Docsy theme UI strings in your chosen language aren't suitable for your project, or if you need additional strings for your site, you can create your own project-specific internationalization file in your project's `/i18n` directory. For example, if you want to override any of Docsy's [English-language strings](https://github.com/google/docsy/blob/main/i18n/en.toml), create your own `/i18n/en.toml` with just your custom strings.  Any values you specify in this file will override the theme versions, while the remaining strings will come from the theme's corresponding internationalization bundle.
+	serverAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
+	worker = wor.NewWorker().SetWorkerName(wname).WithTrace(skyReporterUrl)
+	err = worker.AddServer("tcp", serverAddr)
+	if err != nil {
+		log.Fatalln(err)
+		worker.WorkerClose()
+		return
+	}
+
+	worker.AddFunction("ToUpper", ToUpper)
+	//register to discovery server
+	worker.Register(wor.EtcdConfig{Addrs: discoverys, Username: disUsername, Password: disPassword})
+
+	if err = worker.WorkerReady(); err != nil {
+		log.Fatalln(err)
+		worker.WorkerClose()
+		return
+	}
+
+	go worker.WorkerDo()
+
+	quits := make(chan os.Signal, 1)
+	signal.Notify(quits, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT /*syscall.SIGUSR1*/)
+	switch <-quits {
+	case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
+		worker.WorkerClose()
+	}
+}
+
+```
+
+
+## Worker2
+
+worker2使用SkyWalking进行链路追踪
+
+```go
+const NMIDSERVERHOST = "127.0.0.1"
+const NMIDSERVERPORT = "6808"
+
+func ToUpper2(job wor.Job) (ret []byte, err error) {
+	resp := job.GetResponse()
+	if nil == resp {
+		return []byte(``), fmt.Errorf("response data error")
+	}
+
+	var name string
+	if len(resp.ParamsMap) > 0 {
+		name = resp.ParamsMap["name"].(string)
+	}
+
+	errHandler := func(e error) {
+		if model.RESTIMEOUT == e {
+			log.Println("time out here")
+		} else {
+			log.Println(e)
+		}
+	}
+
+	respHandler := func(resp *cli.Response) {
+		if resp.DataType == model.PDT_S_RETURN_DATA && resp.RetLen != 0 {
+			if resp.RetLen == 0 {
+				log.Println("ret empty")
+				err = errors.New("ret empty")
+				return
+			}
+
+			var cretStruct model.RetStruct
+			uerr := msgpack.Unmarshal(resp.Ret, &cretStruct)
+			if nil != uerr {
+				log.Fatalln(uerr)
+				err = uerr
+				return
+			}
+
+			if cretStruct.Code != 0 {
+				log.Println(cretStruct.Msg)
+				err = errors.New(cretStruct.Msg)
+				return
+			}
+			fmt.Println(string(cretStruct.Data))
+
+			wretStruct := model.GetRetStruct()
+			wretStruct.Msg = "ok"
+			wretStruct.Data = cretStruct.Data
+			ret, err = msgpack.Marshal(wretStruct)
+
+			resp.RetLen = uint32(len(ret))
+			resp.Ret = ret
+		}
+	}
+
+	callAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
+	funcName := "ToUpper"
+	paramsName1 := make(map[string]interface{})
+	paramsName1["name"] = name
+	job.ClientCall(callAddr, funcName, paramsName1, respHandler, errHandler)
+
+	return
+}
+
+func main() {
+	wname := "Worker2"
+
+	var worker *wor.Worker
+	var err error
+    var skyReporterUrl = "192.168.10.176:11800"
+
+	serverAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
+	worker = wor.NewWorker().SetWorkerName(wname).WithTrace(skyReporterUrl)
+	err = worker.AddServer("tcp", serverAddr)
+	if err != nil {
+		log.Fatalln(err)
+		worker.WorkerClose()
+		return
+	}
+
+	worker.AddFunction("ToUpper2", ToUpper2)
+	//register to discovery server
+	worker.Register(wor.EtcdConfig{Addrs: discoverys, Username: disUsername, Password: disPassword})
+
+	if err = worker.WorkerReady(); err != nil {
+		log.Fatalln(err)
+		worker.WorkerClose()
+		return
+	}
+
+	go worker.WorkerDo()
+
+	quits := make(chan os.Signal, 1)
+	signal.Notify(quits, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT /*syscall.SIGUSR1*/)
+	switch <-quits {
+	case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
+		worker.WorkerClose()
+	}
+}
+
+```  
+
+## SkyWalking 后台展示 
+
+### 拓扑结构
+
+<img src="/images/topology.png" alt="nmid architecture"/>  
+
+### worker1链路
+
+<img src="/images/worker1.png" alt="nmid architecture"/>  
+
+### worker2链路
+
+<img src="/images/worker2.png" alt="nmid architecture"/>
