@@ -1,5 +1,6 @@
 ---
-title: 🌙SkyWalking例子
+title: "🌙SkyWalking例子"
+linkTitle: "🌙SkyWalking例子"
 weight: 3
 description:
 ---
