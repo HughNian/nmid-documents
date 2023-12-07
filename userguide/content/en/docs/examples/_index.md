@@ -8,7 +8,7 @@ nmid的使用包含client和worker
 
 ## Client
 
-普通golang代码中运行
+普通golang代码中运行 
 
 ```go
 const SERVERHOST = "127.0.0.1"
