@@ -8,7 +8,7 @@ description: A golang micro service framework
 {.display-6}
 
 <a class="btn btn-lg btn-primary me-3" href="about/">Learn More</a>
-<a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases" target="_blank">Get started</a>
+<a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases" target="_blank">Download</a>
 {.p-initial .my-5}
 
 <!-- <span style="margin-top:25px;margin-bottom:15px">
