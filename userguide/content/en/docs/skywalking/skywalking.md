@@ -5,7 +5,7 @@ weight: 3
 description:
 ---
 
-client调用worker1，worker1调用worker2，调用层级2层，后面又多层调用以此类推，本示例展示多层调用，并使用
+client调用worker1，worker1调用worker2，调用层级2层，后面有多层调用以此类推，本示例展示多层调用，并使用
 skywalking进行调用链的跟踪查看
 
 ## Client
@@ -150,7 +150,7 @@ func main() {
 
 ## Worker2
 
-worker2使用SkyWalking进行链路追踪
+worker2调用worker1，使用SkyWalking进行链路追踪
 
 ```go
 const NMIDSERVERHOST = "127.0.0.1"
