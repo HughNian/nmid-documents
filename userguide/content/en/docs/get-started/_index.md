@@ -1,7 +1,7 @@
 
 ---
 title: 🚀开始
-weight: 2
+weight: 1
 aliases: [/docs/getting-started/]
 date: 2018-07-30
 description:
