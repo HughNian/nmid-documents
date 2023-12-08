@@ -234,8 +234,6 @@ func main() {
 	}
 
 	worker.AddFunction("ToUpper2", ToUpper2)
-	//register to discovery server
-	worker.Register(wor.EtcdConfig{Addrs: discoverys, Username: disUsername, Password: disPassword})
 
 	if err = worker.WorkerReady(); err != nil {
 		log.Fatalln(err)
