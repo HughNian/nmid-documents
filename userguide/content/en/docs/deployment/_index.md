@@ -1,7 +1,8 @@
 ---
 title: 🚂部署使用
+linkTitle: 🚂部署使用
 weight: 5
-description: 🚂部署使用
+description:
 ---
 
 nmid的使用可以分为两类，一个是作为微服务的rpc框架使用，同时兼具调度和分发服务的作用，这是最主要的使用场景。
