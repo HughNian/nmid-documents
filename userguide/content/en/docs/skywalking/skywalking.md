@@ -79,6 +79,7 @@ worker1使用SkyWalking进行链路追踪
 ```go
 const NMIDSERVERHOST = "127.0.0.1"
 const NMIDSERVERPORT = "6808"
+const SKYREPORTERURL = "192.168.10.176:11800"
 
 func ToUpper(job wor.Job) ([]byte, error) {
 	resp := job.GetResponse()
@@ -111,10 +112,9 @@ func main() {
 
 	var worker *wor.Worker
 	var err error
-    var skyReporterUrl = "192.168.10.176:11800"
 
 	serverAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
-	worker = wor.NewWorker().SetWorkerName(wname).WithTrace(skyReporterUrl)
+	worker = wor.NewWorker().SetWorkerName(wname).WithTrace(SKYREPORTERURL)
 	err = worker.AddServer("tcp", serverAddr)
 	if err != nil {
 		log.Fatalln(err)
@@ -152,6 +152,7 @@ worker2使用SkyWalking进行链路追踪
 ```go
 const NMIDSERVERHOST = "127.0.0.1"
 const NMIDSERVERPORT = "6808"
+const SKYREPORTERURL = "192.168.10.176:11800"
 
 func ToUpper2(job wor.Job) (ret []byte, err error) {
 	resp := job.GetResponse()
@@ -219,10 +220,9 @@ func main() {
 
 	var worker *wor.Worker
 	var err error
-    var skyReporterUrl = "192.168.10.176:11800"
 
 	serverAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
-	worker = wor.NewWorker().SetWorkerName(wname).WithTrace(skyReporterUrl)
+	worker = wor.NewWorker().SetWorkerName(wname).WithTrace(SKYREPORTERURL)
 	err = worker.AddServer("tcp", serverAddr)
 	if err != nil {
 		log.Fatalln(err)
