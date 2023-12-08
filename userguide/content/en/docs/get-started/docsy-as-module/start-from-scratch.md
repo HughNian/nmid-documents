@@ -9,7 +9,7 @@ description: >
 
 The simplest approach to creating a Docsy site is [copying our example site](/docs/get-started/docsy-as-module/example-site-as-template/). However, if you're an experienced Hugo user or the site structure of our example site doesn't meet your needs, you may prefer to create a new site from scratch. With this option, you'll get Docsy look and feel, navigation, and other features, but you'll need to specify your own site structure.
 
-These instructions give you a minimum file structure for your site project only, so that you build and extend your actual site step by step. The first step is adding the Docsy theme as a [Hugo Module](https://gohugo.io/hugo-modules/) to your site. If needed, you can easily [update](/docs/updating/) the module to the latest revision from the Docsy GitHub repo.
+These instructions give you a minimum file structure for your site project only, so that you build and extend your actual site step by step. The first step is adding the Docsy theme as a [Hugo Module](https://gohugo.io/hugo-modules/) to your site.
 
 ## TL;DR: Setup for the impatient expert
 

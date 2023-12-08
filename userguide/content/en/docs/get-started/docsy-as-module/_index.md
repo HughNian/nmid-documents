@@ -9,8 +9,6 @@ description: >
 
 [Hugo modules](https://gohugo.io/hugo-modules/) are the simplest and latest way to use Hugo themes like Docsy when building a website. Hugo uses the modules mechanism to pull in the theme files from the main Docsy repo at your chosen revision, and it’s easy to keep the theme up to date in your site. Our example site uses Docsy as a Hugo module.
 
-To find out about other setup approaches, see our [Get started](/docs/get-started/) overview. If you want to migrate an existing Docsy site to use Hugo Modules, see our [migration guide](/docs/updating/convert-site-to-module/).
-
 ## Setup options with Hugo Modules
 
 To use Docsy as a Hugo Module, you have a couple of options:
