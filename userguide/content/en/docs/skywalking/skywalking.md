@@ -82,7 +82,7 @@ worker1使用SkyWalking进行链路追踪
 ```go
 const NMIDSERVERHOST = "127.0.0.1"
 const NMIDSERVERPORT = "6808"
-const SKYREPORTERURL = "192.168.10.176:11800" //skywalking的rpc地址
+const SKYREPORTERURL = "192.168.10.176:11800" //skywalking的grpc地址
 
 func ToUpper(job wor.Job) ([]byte, error) {
 	resp := job.GetResponse()
@@ -155,7 +155,7 @@ worker2使用SkyWalking进行链路追踪
 ```go
 const NMIDSERVERHOST = "127.0.0.1"
 const NMIDSERVERPORT = "6808"
-const SKYREPORTERURL = "192.168.10.176:11800" //skywalking的rpc地址
+const SKYREPORTERURL = "192.168.10.176:11800" //skywalking的grpc地址
 
 func ToUpper2(job wor.Job) (ret []byte, err error) {
 	resp := job.GetResponse()
