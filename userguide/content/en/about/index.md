@@ -16,8 +16,9 @@ nmid是golang实现的轻量级的分布式微服务框架，主要有服务调�
 
 {{% blocks/section color="primary" %}}
 
-<div style="font-size:25px;line-height:50px;">
 ## nmid关联项目
+
+<div style="font-size:25px;line-height:50px;">
 1.nmid调用系统，nmid客户端，nmid工作端（go语言实现）。 [https://github.com/HughNian/nmid](https://github.com/HughNian/nmid)  
 
 2.nmid客户端，nmid工作端（c语言实现）。[https://github.com/HughNian/nmid-c](https://github.com/HughNian/nmid-c)  
