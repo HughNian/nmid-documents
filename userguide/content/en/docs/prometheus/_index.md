@@ -5,7 +5,8 @@ weight: 3
 description:
 ---
 
-1.nmid server内置prometheus监控服务，需要配置文件开启使用，默认metric数据为
+1.nmid server内置prometheus监控服务，需要配置文件开启使用，默认metric数据为  
+
 1️⃣nmid func调用次数(qps)  
 2️⃣nmid func调用耗时(during)  
 3️⃣func总数量  
@@ -13,6 +14,7 @@ description:
 5️⃣func调用成功次数  
 6️⃣func调用失败次数  
 7️⃣worker关闭次数  
+
 
 2.同时可以使用nmid中已经封装好的prometheus pkg包对你自身服务进行各项prometheus metric监控  
 
