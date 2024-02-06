@@ -33,7 +33,7 @@ Prometheus:
 
 ### nmid dashboard  
 
-<img src="/images/dashboard.jpg" alt="nmid architecture"/>  
+<img src="/images/dashboard.png" alt="nmid architecture"/>  
 
 ### func qps
 
