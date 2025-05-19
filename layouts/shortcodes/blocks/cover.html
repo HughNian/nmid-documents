@@ -22,6 +22,13 @@
     background-clip: text;
     color: transparent;
   }
+
+  .gradient-text2 {
+    background: linear-gradient(to right, #e5d12e, #ff0300);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 </style>
 
 <div id="{{ $blockID }}" style="--bs-gutter-x: 1.5rem;--bs-gutter-y: 0;display: flex;flex-wrap: wrap;margin-top:calc(-1 * var(--bs-gutter-y));margin-right: calc(-0.5 * var(--bs-gutter-x));margin-left: calc(-0.5 * var(--bs-gutter-x));">
@@ -33,7 +40,7 @@
       <div class="text-center">
         <center><img src="logo-removebg.png" alt="nmid Logo" width="350" height="350" style="max-width: 100%;"></center>
         {{ with .Get "title" }}<h1 class="display-1 mt-0 pb-4 gradient-text">{{ $title := . }}{{ with $logo_image }}{{ $logo_image_resized := (.Fit (printf "70x70 %s" $logo_anchor)) }}{{ end }}{{ $title | html }}</h1>{{ end }}
-        {{ with .Get "subtitle" }}<p class="display-2 text-uppercase mb-0">{{ . | html }}</p>{{ end }}
+        {{ with .Get "subtitle" }}<p class="display-2 text-uppercase mb-0 gradient-text2">{{ . | html }}</p>{{ end }}
         <div class="pt-3 lead">
           {{ if eq .Page.File.Ext "md" }}
               {{ .Inner | markdownify }}
