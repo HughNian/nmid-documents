@@ -8,7 +8,7 @@ description: A golang micro service framework
 {.display-6}
 
 <a class="btn btn-lg btn-primary me-3" href="about/">Learn More</a>
-<a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases" target="_blank">Get started</a>
+<a class="btn btn-lg btn-secondary" href="https://github.com/HughNian/nmid/releases" target="_blank">Download</a>
 {.p-initial .my-5}
 
 <!-- <span style="margin-top:25px;margin-bottom:15px">
@@ -22,9 +22,9 @@ description: A golang micro service framework
 {{% /blocks/cover %}}
 
 {{% blocks/lead color="1" %}}
-👏👏Golang微服务框架、rpc框架、k8s sidecar、serverless函数  
-
-🤟🤟nmid意思为中场指挥官，足球场上的中场就是统领进攻防守的核心。这里是服务的调度核心。一个轻量级分布式微服务RPC框架。 
+👏👏Golang微服务框架、rpc框架、k8s sidecar、serverless函数👋👋  
+<br />
+nmid意思为中场指挥官，足球场上的中场就是统领进攻防守的核心。这里是服务的调度核心。一个轻量级分布式微服务RPC框架。
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" type="row" %}}

@@ -1,44 +1,75 @@
 ---
-title: 🌰例子
-weight: 2
+title: "📡Discovery注册中心"
+linkTitle: "📡Discovery注册中心"
+weight: 4
 description:
 ---
 
-nmid的使用包含client和worker
+目前nmid只使用etcd为注册中心，client和worker的使用处需要使用相应discovery的方法
 
 ## Client
 
-普通golang代码中运行 
+client使用discovery，下面是一个http api服务列子
 
 ```go
 const SERVERHOST = "127.0.0.1"
 const SERVERPORT = "6808"
 
-func main() {
-	var client *cli.Client
-	var err error
+var client *cli.Client
+var err error
+var consumer *cli.Consumer
 
-	serverAddr := SERVERHOST + ":" + SERVERPORT
-	client, err = cli.NewClient("tcp", serverAddr).Start()
+func getClient() *cli.Client {
+	serverAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
+	client, err := cli.NewClient("tcp", serverAddr).SetIoTimeOut(30 * time.Second).Start()
 	if nil == client || err != nil {
-		log.Println(err)
+		logger.Error(err)
+	}
+
+	return client
+}
+
+func discovery(funcName string) *cli.Client {
+	client := consumer.Discovery(funcName)
+	if client != nil {
+		client, err := client.SetIoTimeOut(30 * time.Second).Start()
+		if nil == client || err != nil {
+			logger.Error(err)
+		}
+	} else {
+		client = getClient()
+	}
+
+	return client
+}
+
+func Test(ctx *fasthttp.RequestCtx) {
+	funcName := "ToUpper"
+
+	client := discovery(funcName)
+	defer client.Close()
+
+	if nil == client {
+		fmt.Fprint(ctx, "nmid client error")
 		return
 	}
-	defer client.Close()
+
+	client.SetParamsType(model.PARAMS_TYPE_JSON)
 
 	client.ErrHandler = func(e error) {
 		if model.RESTIMEOUT == e {
-			log.Println("time out here")
+			logger.Warn("time out here")
 		} else {
-			log.Println(e)
+			logger.Error(e)
 		}
-		fmt.Println("client err here")
+
+		fmt.Fprint(ctx, e.Error())
 	}
 
 	respHandler := func(resp *cli.Response) {
 		if resp.DataType == model.PDT_S_RETURN_DATA && resp.RetLen != 0 {
 			if resp.RetLen == 0 {
-				log.Println("ret empty")
+				logger.Info("ret empty")
 				return
 			}
 
@@ -55,31 +86,52 @@ func main() {
 			}
 
 			fmt.Println(string(retStruct.Data))
+
+			fmt.Fprint(ctx, string(retStruct.Data))
 		}
 	}
 
-	paramsName1 := make(map[string]interface{})
-	paramsName1["name"] = "nmid"
-	params1, err := msgpack.Marshal(&paramsName1)
+	paramsName := make(map[string]interface{})
+	paramsName["name"] = "niansong1"
+	//params, err := msgpack.Marshal(&paramsName)
+	params1, err := json.Marshal(&paramsName)
 	if err != nil {
-		log.Fatalln("params msgpack error:", err)
-		os.Exit(1)
+		logger.Fatal("params msgpack error:", err)
 	}
-	err = client.Do("ToUpper", params1, respHandler)
+	err = client.Do(funcName, params1, respHandler)
 	if nil != err {
-		fmt.Println(err)
+		logger.Error(`do err`, err)
 	}
+}
+
+func main() {
+	consumer = &cli.Consumer{
+		EtcdAddrs: discoverys,
+		Username:  disUsername,
+		Password:  disPassword,
+	}
+	consumer.EtcdCli = consumer.EtcdClient()
+	consumer.EtcdWatch()
+
+	router := fasthttprouter.New()
+	router.GET("/test", Test)
+	err := fasthttp.ListenAndServe(":5981", router.Handler)
+	fmt.Println(`err info:`, err)
 }
 ```
 
 
-## Worker
+## Worker1
 
-普通golang代码中运行
+worker1注册到discovery
 
 ```go
 const NMIDSERVERHOST = "127.0.0.1"
 const NMIDSERVERPORT = "6808"
+
+var discoverys = []string{"localhost:2379"}
+var disUsername = "root"
+var disPassword = "123456"
 
 func ToUpper(job wor.Job) ([]byte, error) {
 	resp := job.GetResponse()
@@ -114,7 +166,7 @@ func main() {
 	var err error
 
 	serverAddr := NMIDSERVERHOST + ":" + NMIDSERVERPORT
-	worker = wor.NewWorker().SetWorkerName(wname)
+	worker = wor.NewWorker().SetWorkerName(wname).WithTrace(SKYREPORTERURL)
 	err = worker.AddServer("tcp", serverAddr)
 	if err != nil {
 		log.Fatalln(err)
@@ -123,7 +175,7 @@ func main() {
 	}
 
 	worker.AddFunction("ToUpper", ToUpper)
-	//register to discovery server
+	//worker注册到注册中心
 	worker.Register(wor.EtcdConfig{Addrs: discoverys, Username: disUsername, Password: disPassword})
 
 	if err = worker.WorkerReady(); err != nil {
